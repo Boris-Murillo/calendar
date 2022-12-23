@@ -17,13 +17,9 @@ function getNameOfMonth(month){
     const monthNames = ["January", "February", "March", "April", "May", "June",
          "July", "August", "September", "October", "November", "December"
     ];
-    // if (month == 12) {
-    //   return monthNames[0];
-    // }
     return monthNames[month];
 }
 
-// build calendar   
 function buildCalendar(monthEntry, yearEntry) {
     let month = monthEntry;
     let year = yearEntry;
@@ -38,8 +34,12 @@ function buildCalendar(monthEntry, yearEntry) {
     
     for(let i = 0; i < getTotalDaysOfMonth(month, year); i++){
         let day = document.createElement("div");
-        if (i + 1  == getToday() && yearEntry == getYear()) {
-            day.classList.add("today");
+        if (
+          i + 1 == getToday() &&
+          yearEntry == getYear() &&
+          monthEntry == getMonth()
+        ) {
+          day.classList.add("today");
         }
         day.classList.add("day");
         day.innerText = i + 1;
@@ -74,5 +74,23 @@ next.addEventListener("click", function () {
     
     document.querySelector(".month").innerText = getNameOfMonth(incrementMonth);
 
+});
+
+const previous = document.querySelector(".previous");
+previous.addEventListener("click", function () {
+  incrementMonth--;
+  document.querySelectorAll(".day").forEach(function (day) {
+    day.remove();
+  });
+
+  if (incrementMonth == -1) {
+    incrementMonth = 11;
+    incrementYear--;
+    buildCalendar(incrementMonth, incrementYear);
+  } else {
+    buildCalendar(incrementMonth, incrementYear);
+  }
+
+  document.querySelector(".month").innerText = getNameOfMonth(incrementMonth);
 });
 
