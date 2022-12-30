@@ -49,3 +49,23 @@ div {
   height: 60px;
   width: 60px;
 }
+
+.modal{
+  width: 0px;
+  height: 0px;
+  transition: width .5s, height .5s;
+}
+
+.modal_show {
+  background-color: aqua;
+  position: absolute;
+  width: 40vw;
+  height: 60vh;
+  display: grid;
+  grid-template-rows: 5% 80% 15%;
+  justify-content: flex-start;
+}
+
+.wrapper_opacity {
+  opacity: .1;
+}

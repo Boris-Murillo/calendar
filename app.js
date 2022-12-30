@@ -34,6 +34,9 @@ function buildCalendar(monthEntry, yearEntry) {
     
     for(let i = 0; i < getTotalDaysOfMonth(month, year); i++){
         let day = document.createElement("div");
+        day.addEventListener("click", function(){
+            showModal();
+        });
         if (
           i + 1 == getToday() &&
           yearEntry == getYear() &&
@@ -93,4 +96,30 @@ previous.addEventListener("click", function () {
 
   document.querySelector(".month").innerText = getNameOfMonth(incrementMonth);
 });
+
+function showModal(){
+    const modal = document.createElement("div");
+    const close = document.createElement("div");
+    
+    close.innerHTML = '<img src="icons/close.svg" id="close" alt="Previous" />';
+
+    modal.classList.add("modal");
+    document.querySelector("body").appendChild(modal);
+    modal.appendChild(close);
+    document.querySelector(".wrapper").classList.add("wrapper_opacity");
+
+    // myTimeout = setTimeout( () => 
+      document.querySelector(".modal").classList.add("modal_show"); 
+    // 400);
+
+    document.querySelector('#close')?.addEventListener(
+      'click', () => {
+        document.querySelector(".modal").remove();
+        document.querySelector(".wrapper").classList.remove("wrapper_opacity");
+      }
+    )
+   
+}
+
+
 
