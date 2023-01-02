@@ -48,6 +48,8 @@ function buildCalendar(monthEntry, yearEntry) {
         day.innerText = i + 1;
         containerCalentar.appendChild(day);
     }
+
+    document.querySelector(".month").innerText = getNameOfMonth(incrementMonth);
     
 }
 
