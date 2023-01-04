@@ -69,3 +69,8 @@ div {
 .wrapper_opacity {
   opacity: .1;
 }
+
+.holiday {
+  background: #40E0D0;
+  border-radius: 50%;
+}

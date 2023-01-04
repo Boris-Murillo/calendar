@@ -20,7 +20,8 @@ function getNameOfMonth(month){
     return monthNames[month];
 }
 
-function buildCalendar(monthEntry, yearEntry) {
+async function buildCalendar(monthEntry, yearEntry) {
+    let holidays = [];
     let month = monthEntry;
     let year = yearEntry;
     const firstDay = new Date(year, month).getDay();
@@ -31,6 +32,11 @@ function buildCalendar(monthEntry, yearEntry) {
         day.classList.add("day");   
         containerCalentar.appendChild(day);
     }
+
+    const data = await getHolidays();
+    holidays = data.holidays;
+    holidays = holidays.filter((day) => day.type[0] == 'National holiday')
+    
     
     for(let i = 0; i < getTotalDaysOfMonth(month, year); i++){
         let day = document.createElement("div");
@@ -46,11 +52,29 @@ function buildCalendar(monthEntry, yearEntry) {
         }
         day.classList.add("day");
         day.innerText = i + 1;
+        day.id = `day${i + 1}`;
         containerCalentar.appendChild(day);
     }
 
+    paintHolidays(holidays);
     document.querySelector(".month").innerText = getNameOfMonth(incrementMonth);
     
+}
+
+function paintHolidays(holidays){
+  for(holiday of holidays ){
+    let element = document.querySelector(`#day${holiday.date.datetime.day}`);
+    element.classList.add('holiday');
+  }
+}
+
+async function getHolidays(){
+    const API_URL = "https://calendarific.com/api/v2/holidays";
+    const key = "08daa6056117cec1eca0cad19ef5a8ff7257e55e";
+    const country = "CO";
+    res = await fetch(`${API_URL}?&api_key=${key}&country=${country}&year=${incrementYear}&month=${incrementMonth + 1}`);
+    const datos = await res.json();
+    return datos.response;
 }
 
 function getTotalDaysOfMonth(month, year) {
