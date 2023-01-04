@@ -27,15 +27,15 @@ async function buildCalendar(monthEntry, yearEntry) {
     const firstDay = new Date(year, month).getDay();
     const containerCalentar = document.querySelector('.wrapper');
 
+    document.querySelector('.year > span').innerText = incrementYear;
+
     for(let i= 0; i < firstDay; i++){
         let day = document.createElement("div");
         day.classList.add("day");   
         containerCalentar.appendChild(day);
     }
 
-    const data = await getHolidays();
-    holidays = data.holidays;
-    holidays = holidays.filter((day) => day.type[0] == 'National holiday')
+    
     
     
     for(let i = 0; i < getTotalDaysOfMonth(month, year); i++){
@@ -56,9 +56,13 @@ async function buildCalendar(monthEntry, yearEntry) {
         containerCalentar.appendChild(day);
     }
 
-    paintHolidays(holidays);
-    document.querySelector(".month").innerText = getNameOfMonth(incrementMonth);
     
+    document.querySelector(".month").innerText = getNameOfMonth(incrementMonth);
+
+    const data = await getHolidays();
+    holidays = data.holidays;
+    holidays = holidays.filter((day) => day.type[0] == 'National holiday')
+    paintHolidays(holidays);
 }
 
 function paintHolidays(holidays){

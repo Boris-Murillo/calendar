@@ -18,15 +18,11 @@ body {
   grid-template-columns: repeat(7, minmax(60px, 1fr));
   max-width: 660px;
   grid-gap: 30px;
-  background: #FFFFFF;
-  box-shadow: 0px 2.3128px 39.3176px rgba(0, 0, 0, 0.25);
-  border-radius: 24px;
-  padding: 75px 100px;
 }
 
 div {
   text-align: center;
-  min-height: 60px;
+  min-height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -73,4 +69,18 @@ div {
 .holiday {
   background: #40E0D0;
   border-radius: 50%;
+  height: 60px;
+}
+
+.main {
+    display: grid;
+    grid-template-rows: 15% 85%;
+    box-shadow: 0px 2.3128px 39.3176px rgb(0 0 0 / 25%);
+    border-radius: 24px;
+    padding: 49px 90px;
+    background: #FFFFFF;
+}
+
+.year{
+  align-items: flex-start;
 }
