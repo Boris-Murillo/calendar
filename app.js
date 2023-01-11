@@ -58,10 +58,10 @@ async function buildCalendar(monthEntry, yearEntry) {
     
     document.querySelector(".month").innerText = getNameOfMonth(incrementMonth);
 
-    const data = await getHolidays();
-    holidays = data.holidays;
-    holidays = holidays.filter((day) => day.type[0] == 'National holiday')
-    paintHolidays(holidays);
+    // const data = await getHolidays();
+    // holidays = data.holidays;
+    // holidays = holidays.filter((day) => day.type[0] == 'National holiday')
+    // paintHolidays(holidays);
 }
 
 function paintHolidays(holidays){

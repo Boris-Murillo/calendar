@@ -17,7 +17,7 @@ function paintRecordatorios(i, element){
         element.appendChild(p);
   
         let divsito = document.createElement('div');
-        divsito.classList.add('recordatorio');
+        divsito.classList.add('reminder');
   
         let div2 = document.createElement('div');
         div2.classList.add('circle');

@@ -8,7 +8,6 @@ function showModal(event){
     close.innerHTML = '<img src="icons/close.svg" id="close" alt="close" />';
     modal.appendChild(close);
 
-
     const inputTitle = document.createElement('input');
     inputTitle.placeholder = 'Title';
     inputTitle.classList.add('title');
