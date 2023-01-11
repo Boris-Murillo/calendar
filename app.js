@@ -1,5 +1,6 @@
 let incrementMonth = getMonth();
 let incrementYear = getYear();
+let selected = 0;
 
 function getMonth(){
   return new Date().getMonth();
@@ -34,14 +35,11 @@ async function buildCalendar(monthEntry, yearEntry) {
         day.classList.add("day");   
         containerCalentar.appendChild(day);
     }
-
-    
-    
     
     for(let i = 0; i < getTotalDaysOfMonth(month, year); i++){
         let day = document.createElement("div");
         day.addEventListener("click", function(){
-            showModal();
+            showModal(this);
         });
         if (
           i + 1 == getToday() &&
@@ -53,6 +51,7 @@ async function buildCalendar(monthEntry, yearEntry) {
         day.classList.add("day");
         day.innerText = i + 1;
         day.id = `day${i + 1}`;
+        paintRecordatorios(i+1, day, containerCalentar);
         containerCalentar.appendChild(day);
     }
 
@@ -66,6 +65,7 @@ async function buildCalendar(monthEntry, yearEntry) {
 }
 
 function paintHolidays(holidays){
+  
   for(holiday of holidays ){
     let element = document.querySelector(`#day${holiday.date.datetime.day}`);
     element.classList.add('holiday');
@@ -126,30 +126,4 @@ previous.addEventListener("click", function () {
 
   document.querySelector(".month").innerText = getNameOfMonth(incrementMonth);
 });
-
-function showModal(){
-    const modal = document.createElement("div");
-    const close = document.createElement("div");
-    
-    close.innerHTML = '<img src="icons/close.svg" id="close" alt="Previous" />';
-
-    modal.classList.add("modal");
-    document.querySelector("body").appendChild(modal);
-    modal.appendChild(close);
-    document.querySelector(".wrapper").classList.add("wrapper_opacity");
-
-    // myTimeout = setTimeout( () => 
-      document.querySelector(".modal").classList.add("modal_show"); 
-    // 400);
-
-    document.querySelector('#close')?.addEventListener(
-      'click', () => {
-        document.querySelector(".modal").remove();
-        document.querySelector(".wrapper").classList.remove("wrapper_opacity");
-      }
-    )
-   
-}
-
-
 
