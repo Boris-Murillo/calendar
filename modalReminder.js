@@ -15,7 +15,7 @@ function showModal(event){
     textarea.placeholder = 'Description';
     textarea.classList.add('description');
 
-    let response = verifyLocalStorage(event.innerHTML);
+    let response = verifyLocalStorage(event.firstChild.innerHTML);
     if(response){
       inputTitle.value = response['title'] ? response['title'] : '';
       textarea.innerText = response['description'] ? response['description'] : '';
@@ -48,8 +48,14 @@ function showModal(event){
       'click', () => {
         const title = document.querySelector('.title').value;
         const description = document.querySelector('.description').value;
-        localStorage.setItem(`title${event.innerHTML}`, title);
-        localStorage.setItem(`description${event.innerHTML}`, description);
+        title.trim();
+        description.trim();
+        if(title || description){
+          localStorage.setItem(`title${event.innerHTML}`, title);
+          localStorage.setItem(`description${event.innerHTML}`, description);
+          paintRecordatorios(event.innerHTML, event);
+          alert('successfully saved');
+        }
       }
     )
    
