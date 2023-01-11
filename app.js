@@ -54,8 +54,6 @@ async function buildCalendar(monthEntry, yearEntry) {
         paintRecordatorios(i+1, day, containerCalentar);
         containerCalentar.appendChild(day);
     }
-
-    
     document.querySelector(".month").innerText = getNameOfMonth(incrementMonth);
 
     // const data = await getHolidays();
@@ -65,7 +63,6 @@ async function buildCalendar(monthEntry, yearEntry) {
 }
 
 function paintHolidays(holidays){
-  
   for(holiday of holidays ){
     let element = document.querySelector(`#day${holiday.date.datetime.day}`);
     element.classList.add('holiday');
@@ -85,9 +82,6 @@ function getTotalDaysOfMonth(month, year) {
     return new Date(year, month + 1, 0).getDate();
 }
 
-buildCalendar(getMonth(), getYear());
-
-
 const next = document.querySelector(".next");
 next.addEventListener("click", function () {
 
@@ -104,9 +98,7 @@ next.addEventListener("click", function () {
     } else {
         buildCalendar(incrementMonth, incrementYear);
     }
-    
     document.querySelector(".month").innerText = getNameOfMonth(incrementMonth);
-
 });
 
 const previous = document.querySelector(".previous");
@@ -126,4 +118,6 @@ previous.addEventListener("click", function () {
 
   document.querySelector(".month").innerText = getNameOfMonth(incrementMonth);
 });
+
+buildCalendar(getMonth(), getYear());
 

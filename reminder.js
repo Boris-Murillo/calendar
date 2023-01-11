@@ -11,18 +11,18 @@ function paintRecordatorios(i, element){
   
         element.innerText = '';
         element.classList.add('note-background');
-        let p = document.createElement('p');
+        const p = document.createElement('p');
         p.innerText = i;
         p.classList.add('note');
         element.appendChild(p);
   
-        let divsito = document.createElement('div');
-        divsito.classList.add('reminder');
+        const divReminder = document.createElement('div');
+        divReminder.classList.add('reminder');
+        element.appendChild(divReminder);
   
-        let div2 = document.createElement('div');
-        div2.classList.add('circle');
-        divsito.appendChild(div2);
-        element.appendChild(divsito);
+        const circle = document.createElement('div');
+        circle.classList.add('circle');
+        divReminder.appendChild(circle);
       }
   }
 
