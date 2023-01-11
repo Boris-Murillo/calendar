@@ -15,7 +15,7 @@ function showModal(event){
     textarea.placeholder = 'Description';
     textarea.classList.add('description');
 
-    let response = verifyLocalStorage(event.firstChild.innerHTML);
+    let response = verifyLocalStorage(event.innerHTML);
     if(response){
       inputTitle.value = response['title'] ? response['title'] : '';
       textarea.innerText = response['description'] ? response['description'] : '';
