@@ -39,7 +39,7 @@ async function buildCalendar(monthEntry, yearEntry) {
     for(let i = 0; i < getTotalDaysOfMonth(month, year); i++){
         let day = document.createElement("div");
         day.addEventListener("click", function(){
-            showModal(this);
+            showModal(this, incrementMonth, incrementYear);
         });
         if (
           i + 1 == getToday() &&
@@ -51,7 +51,7 @@ async function buildCalendar(monthEntry, yearEntry) {
         day.classList.add("day");
         day.innerText = i + 1;
         day.id = `day${i + 1}`;
-        paintRecordatorios(i+1, day, containerCalentar);
+        paintRecordatorios(i+1, day, incrementMonth, incrementYear );
         containerCalentar.appendChild(day);
     }
     document.querySelector(".month").innerText = getNameOfMonth(incrementMonth);

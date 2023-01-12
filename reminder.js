@@ -1,5 +1,5 @@
-function paintRecordatorios(i, element){
-    if ( localStorage.getItem(`title${i}`) || localStorage.getItem(`description${i}`) )
+function paintRecordatorios(i, element, month, annio){
+    if ( localStorage.getItem(`T-${i}-${month}-${annio}`) || localStorage.getItem(`D-${i}-${month}-${annio}`) )
       {
         element.addEventListener(
           'mouseover', function(){ actionMouseOver(element) }

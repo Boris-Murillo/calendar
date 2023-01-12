@@ -1,4 +1,4 @@
-function showModal(event){
+function showModal(event, month, annio){
     const modal = document.createElement("div");
     modal.classList.add("modal");
     document.querySelector("body").appendChild(modal);
@@ -15,7 +15,7 @@ function showModal(event){
     textarea.placeholder = 'Description';
     textarea.classList.add('description');
 
-    let response = verifyLocalStorage(event.firstChild.innerHTML);
+    let response = verifyLocalStorage(event.firstChild.innerHTML, month, annio);
     if(response){
       inputTitle.value = response['title'] ? response['title'] : '';
       textarea.innerText = response['description'] ? response['description'] : '';
@@ -39,8 +39,7 @@ function showModal(event){
 
     document.querySelector('#close')?.addEventListener(
       'click', () => {
-        document.querySelector(".modal").remove();
-        document.querySelector(".wrapper").classList.remove("wrapper_opacity");
+        closeModal();
       }
     )
 
@@ -51,12 +50,18 @@ function showModal(event){
         title.trim();
         description.trim();
         if(title || description){
-          localStorage.setItem(`title${event.innerHTML}`, title);
-          localStorage.setItem(`description${event.innerHTML}`, description);
-          paintRecordatorios(event.innerHTML, event);
+          localStorage.setItem(`T-${event.innerHTML}-${month}-${annio}`, title);
+          localStorage.setItem(`D-${event.innerHTML}-${month}-${annio}`, description);
+          paintRecordatorios(event.innerHTML, event, month, annio);
           alert('successfully saved');
+          closeModal();
         }
       }
     )
    
+}
+
+function closeModal(){
+  document.querySelector(".modal").remove();
+  document.querySelector(".wrapper").classList.remove("wrapper_opacity");
 }
