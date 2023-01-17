@@ -100,6 +100,11 @@ div {
   z-index: 10;
 }
 
+.note-today {
+  background-color: #ffd200;
+  z-index: 10;
+}
+
 .circle {
   width: 10px;
   background-color: red;
@@ -119,14 +124,16 @@ div {
 .reminder{
   position: absolute;
   z-index: 1;
-  padding-top: 10px;
 }
 
 .note-background{
-  background-color: #DFE8F2;
   border-radius: 50%;
   height: 60px;
   width: 60px;
+}
+
+.note-background-gray{
+  background-color: #DFE8F2;
 }
 
 .container-button-close{

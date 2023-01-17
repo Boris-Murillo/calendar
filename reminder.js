@@ -8,12 +8,19 @@ function paintRecordatorios(i, element, month, annio){
         element.addEventListener(
           'mouseleave', function(){ actionMouseLeave(element) }
         )
-  
+
         element.innerText = '';
-        element.classList.add('note-background');
         const p = document.createElement('p');
         p.innerText = i;
-        p.classList.add('note');
+
+        if(element.classList.contains('today')){
+            p.classList.add('note-today')
+        }else{
+            element.classList.add('note-background-gray');
+            p.classList.add('note');
+        }
+        
+        element.classList.add('note-background');
         element.appendChild(p);
   
         const divReminder = document.createElement('div');
