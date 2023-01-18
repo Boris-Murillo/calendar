@@ -35,7 +35,7 @@ async function buildCalendar(monthEntry, yearEntry) {
         day.classList.add("day");   
         containerCalentar.appendChild(day);
     }
-    
+
     for(let i = 0; i < getTotalDaysOfMonth(month, year); i++){
         let day = document.createElement("div");
         day.addEventListener("click", function(){
@@ -50,21 +50,27 @@ async function buildCalendar(monthEntry, yearEntry) {
         }
         day.classList.add("day");
         day.innerText = i + 1;
-        day.id = `day${i + 1}`;
+        day.id = `day${i + 1}`; 
         paintRecordatorios(i+1, day, incrementMonth, incrementYear );
         containerCalentar.appendChild(day);
     }
     document.querySelector(".month").innerText = getNameOfMonth(incrementMonth);
 
-    // const data = await getHolidays();
-    // holidays = data.holidays;
-    // holidays = holidays.filter((day) => day.type[0] == 'National holiday')
-    // paintHolidays(holidays);
+    const data = await getHolidays();
+    holidays = data.holidays;
+    holidays = holidays.filter((day) => day.type[0] == 'National holiday')
+    holidays = holidays.map( (item)=> item.date.datetime.day)
+    paintHolidays(holidays);
 }
 
 function paintHolidays(holidays){
   for(holiday of holidays ){
-    let element = document.querySelector(`#day${holiday.date.datetime.day}`);
+    let element = document.querySelector(`#day${holiday}`);
+    if(element.classList.contains('note-background-gray')){
+      element.classList.remove('note-background-gray');
+      element.firstChild.classList.remove('note') ;
+      element.firstChild.classList.add('note-holiday');
+    }
     element.classList.add('holiday');
   }
 }

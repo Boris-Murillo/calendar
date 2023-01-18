@@ -52,7 +52,8 @@ function showModal(event, month, annio){
         if(title || description){
           localStorage.setItem(`T-${event.innerHTML}-${month}-${annio}`, title);
           localStorage.setItem(`D-${event.innerHTML}-${month}-${annio}`, description);
-          paintRecordatorios(event.innerHTML, event, month, annio);
+          numberDay = event.firstChild ? event.firstChild.innerHTML : event.innerHTML;
+          paintRecordatorios(numberDay, event, month, annio);
           alert('successfully saved');
           closeModal();
         }

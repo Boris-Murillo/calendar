@@ -105,6 +105,11 @@ div {
   z-index: 10;
 }
 
+.note-holiday {
+  background-color: #40E0D0;
+  z-index: 10;
+}
+
 .circle {
   width: 10px;
   background-color: red;

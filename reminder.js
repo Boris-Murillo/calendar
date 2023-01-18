@@ -14,7 +14,9 @@ function paintRecordatorios(i, element, month, annio){
         p.innerText = i;
 
         if(element.classList.contains('today')){
-            p.classList.add('note-today')
+            p.classList.add('note-today');
+        }else if(element.classList.contains('holiday')){
+            p.classList.add('note-holiday');
         }else{
             element.classList.add('note-background-gray');
             p.classList.add('note');
