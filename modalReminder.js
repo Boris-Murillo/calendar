@@ -35,6 +35,7 @@ function showModal(event, month, annio){
     modal.appendChild(divButton);
   
     document.querySelector(".wrapper").classList.add("wrapper_opacity");
+    document.querySelector(".year").classList.add("wrapper_opacity");
     document.querySelector(".modal").classList.add("modal_show"); 
 
     document.querySelector('#close')?.addEventListener(
@@ -57,6 +58,7 @@ function showModal(event, month, annio){
           alert('successfully saved');
           closeModal();
         }
+        closeModal();
       }
     )
    
@@ -65,4 +67,5 @@ function showModal(event, month, annio){
 function closeModal(){
   document.querySelector(".modal").remove();
   document.querySelector(".wrapper").classList.remove("wrapper_opacity");
+  document.querySelector(".year").classList.remove("wrapper_opacity");
 }

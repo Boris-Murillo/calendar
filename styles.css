@@ -144,3 +144,7 @@ div {
 .container-button-close{
   justify-content: flex-start;
 }
+
+.description{
+  resize: none;
+}
