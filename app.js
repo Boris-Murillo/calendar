@@ -52,6 +52,20 @@ async function buildCalendar(monthEntry, yearEntry) {
         day.innerText = i + 1;
         day.id = `day${i + 1}`; 
         paintRecordatorios(i+1, day, incrementMonth, incrementYear );
+
+        day.addEventListener("dragover", function (e) {
+          e.preventDefault();
+        } );
+
+        day.addEventListener("drop", function (e) {
+          e.preventDefault();
+          $elemt = document.querySelector(".bolt img");
+          const clone = $elemt.cloneNode(true);
+          clone.classList.add('bolt-img');
+          day.appendChild(clone);
+          localStorage.setItem(`Gym-${e.target.innerText}-${month}-${year}`, e.target.lastChild.src);
+        } );
+
         containerCalentar.appendChild(day);
     }
     document.querySelector(".month").innerText = getNameOfMonth(incrementMonth);

@@ -110,26 +110,8 @@ div {
   z-index: 10;
 }
 
-.circle {
-  width: 10px;
-  background-color: red;
-  min-height: 10px;
-  border-radius: 50%;
-}
 
-.note-hover{
-  font-size: 25px;
-  width: 100%;
-  text-align: initial;
-  align-self: flex-start;
-  padding-left: 5px;
-  background-color: transparent;
-}
 
-.reminder{
-  position: absolute;
-  z-index: 1;
-}
 
 .note-background{
   border-radius: 50%;
@@ -147,4 +129,20 @@ div {
 
 .description{
   resize: none;
+}
+
+.bolt{
+  align-self: flex-start;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 10%;
+  margin-left: 2%;
+  gap: 12px;
+}
+
+.bolt-img{
+  width: 25%;
+  align-self: flex-start;
 }
