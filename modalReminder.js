@@ -60,7 +60,6 @@ function showModal(event, month, annio){
         closeModal();
       }
     )
-   
 }
 
 function closeModal(){
