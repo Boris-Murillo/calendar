@@ -6,11 +6,13 @@ body {
   min-width: 100vw;
   min-height: 100vh;
   background: #FBFBFB;
-  display: flex;
   align-items: center;
   justify-content: center;
   font-family: 'Roboto', sans-serif;
   font-size: 2rem;
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: space-evenly;
 }
 
 .wrapper {
@@ -54,11 +56,12 @@ div {
 .modal_show {
   background-color: aqua;
   position: absolute;
-  width: 40vw;
-  height: 60vh;
+  width: 20vw;
+  height: 50vh;
   display: grid;
-  grid-template-rows: 5% 80% 15%;
-  justify-content: flex-start;
+  grid-template-rows: 10% 75% 15%;
+  justify-content: center;
+  left: 30%;
 }
 
 .wrapper_opacity {
@@ -87,7 +90,6 @@ div {
 
 .form{
   display: grid;
-  width: 40vw;
   gap: 12px;
 }
 
@@ -125,6 +127,7 @@ div {
 
 .container-button-close{
   justify-content: flex-start;
+  width: 20vw;
 }
 
 .description{

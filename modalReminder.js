@@ -36,6 +36,7 @@ function showModal(event, month, annio){
   
     document.querySelector(".wrapper").classList.add("wrapper_opacity");
     document.querySelector(".year").classList.add("wrapper_opacity");
+    document.querySelector(".bolt").classList.add("wrapper_opacity");
     document.querySelector(".modal").classList.add("modal_show"); 
 
     document.querySelector('#close')?.addEventListener(
@@ -51,9 +52,9 @@ function showModal(event, month, annio){
         title.trim();
         description.trim();
         if(title || description){
-          localStorage.setItem(`T-${event.innerHTML}-${month}-${annio}`, title);
-          localStorage.setItem(`D-${event.innerHTML}-${month}-${annio}`, description);
-          numberDay = event.innerHTML;
+          numberDay = event.innerHTML.split('<')[0];
+          localStorage.setItem(`T-${numberDay}-${month}-${annio}`, title);
+          localStorage.setItem(`D-${numberDay}-${month}-${annio}`, description);
           paintRecordatorios(numberDay, event, month, annio);
           alert('successfully saved');
         }
@@ -66,4 +67,5 @@ function closeModal(){
   document.querySelector(".modal").remove();
   document.querySelector(".wrapper").classList.remove("wrapper_opacity");
   document.querySelector(".year").classList.remove("wrapper_opacity");
+  document.querySelector(".bolt").classList.remove("wrapper_opacity");
 }
