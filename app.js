@@ -66,6 +66,10 @@ async function buildCalendar(monthEntry, yearEntry) {
           localStorage.setItem(`Gym-${e.target.innerText}-${month}-${year}`, e.target.lastChild.src);
         } );
 
+        day.addEventListener("dragstart", function (e) {
+          localStorage.setItem('idElement', e.target.parentNode.id);
+        });
+
         containerCalentar.appendChild(day);
     }
     document.querySelector(".month").innerText = getNameOfMonth(incrementMonth);
@@ -138,6 +142,18 @@ previous.addEventListener("click", function () {
 
   document.querySelector(".month").innerText = getNameOfMonth(incrementMonth);
 });
+
+document.querySelector(".trash").addEventListener("dragover", function (e) {
+  e.preventDefault();
+});
+
+document.querySelector(".trash").addEventListener("drop", function (e) {
+  e.preventDefault();
+  let element = document.getElementById(localStorage.getItem('idElement'));
+  element.childNodes[1].remove();
+  localStorage.removeItem(`Gym-${element.innerText}-${incrementMonth}-${incrementYear}`);
+  localStorage.removeItem('idElement');
+} );
 
 buildCalendar(getMonth(), getYear());
 
