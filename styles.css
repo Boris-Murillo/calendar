@@ -66,6 +66,7 @@ div {
 
 .wrapper_opacity {
   opacity: .1;
+  pointer-events: none;
 }
 
 .holiday {
